@@ -1,4 +1,4 @@
-package ru.unit6.course.android.retrofit.ui.main
+package ru.unit6.course.android.retrofit.ui.main.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,9 +11,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import okhttp3.*
+import com.google.android.material.imageview.ShapeableImageView
 import ru.unit6.course.android.retrofit.R
-import ru.unit6.course.android.retrofit.data.model.User
+import ru.unit6.course.android.retrofit.ui.main.adapters.MainAdapter
+import ru.unit6.course.android.retrofit.ui.main.viewmodels.MainViewModel
 import ru.unit6.course.android.retrofit.utils.Status
 
 class MainFragment : Fragment() {
@@ -37,6 +38,9 @@ class MainFragment : Fragment() {
         view.apply {
             recyclerView = findViewById(R.id.recyclerView)
             progressBar = findViewById(R.id.progressBar)
+            findViewById<ShapeableImageView>(R.id.ivAddPerson).setOnClickListener {
+                toAddPersonFragment()
+            }
         }
 
         return view
@@ -53,7 +57,9 @@ class MainFragment : Fragment() {
 
     private fun setupUI() {
         recyclerView.layoutManager = LinearLayoutManager(context)
-        adapter = MainAdapter(arrayListOf())
+        adapter = MainAdapter(arrayListOf()) { userId ->
+            toDetailsFragment(userId = userId)
+        }
         recyclerView.addItemDecoration(
             DividerItemDecoration(
                 recyclerView.context,
@@ -82,5 +88,20 @@ class MainFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun toDetailsFragment(userId: String) {
+
+        parentFragmentManager.beginTransaction()
+            .addToBackStack("MainFragment")
+            .replace(R.id.itemContainer, DetailsFragment.newInstance(userId = userId))
+            .commit()
+    }
+
+    private fun toAddPersonFragment(){
+        parentFragmentManager.beginTransaction()
+            .addToBackStack("MainFragment")
+            .replace(R.id.itemContainer, AddPersonFragment.newInstance())
+            .commit()
     }
 }

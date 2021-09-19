@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Retrofit</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="avatar_url"><![CDATA[https://sun9–67.userapi.com/impg/MmWkodEQQJjhO5hv69E2Sr_RueqJH2VeUeLfOw/RK8pYgaG1l8.jpg?size=721x1080&quality=96&sign=d541f23ac6cacc59aa895564199599ee&type=album]]></string>
 </resources>

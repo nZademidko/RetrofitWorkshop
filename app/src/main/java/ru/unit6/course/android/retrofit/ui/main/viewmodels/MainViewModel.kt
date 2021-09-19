@@ -1,4 +1,4 @@
-package ru.unit6.course.android.retrofit.ui.main
+package ru.unit6.course.android.retrofit.ui.main.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData

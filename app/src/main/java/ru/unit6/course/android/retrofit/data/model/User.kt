@@ -4,11 +4,11 @@ import com.google.gson.annotations.SerializedName
 
 data class User(
     @SerializedName("avatar")
-    val avatar: String,
+    val avatar: String = "-1",
     @SerializedName("email")
-    val email: String,
+    val email: String = "-1",
     @SerializedName("id")
-    val id: String,
+    val id: String = "-1",
     @SerializedName("name")
-    val name: String,
+    val name: String = "-1",
 )
